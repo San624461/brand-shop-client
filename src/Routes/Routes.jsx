@@ -7,12 +7,13 @@ import Login from "../Pages/Login";
 
 import ErrorPage from "../Pages/ErrorPage";
 import BrandProducts from "../Pages/BrandProducts";
+import ProductDetails from "../Pages/ProductDetails";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Root></Root>,
-        errorElement:<ErrorPage></ErrorPage>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -25,9 +26,14 @@ const router = createBrowserRouter([
 
             },
             {
-                path:"/products/brand/:brandName",
-                element: <BrandProducts/>,
-               
+                path: "/products/brand/:brandName",
+                element: <BrandProducts />,
+
+            },
+            {
+                path: "/products/:productId",
+                element: <ProductDetails></ProductDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.productId}`)
             },
             {
                 path: '/mycart',

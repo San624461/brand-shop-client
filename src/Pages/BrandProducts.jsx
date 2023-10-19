@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams} from 'react-router-dom';
+import { BsFillArrowDownLeftCircleFill } from 'react-icons/bs';
+import { RxUpdate } from "react-icons/rx";
 
 const BrandProducts = () => {
   const { brandName } = useParams();
+  // const history = useHistory()
   const [products, setProducts] = useState([]);
   console.log(products);
 
@@ -61,8 +64,8 @@ const BrandProducts = () => {
 
             <div key={product._id} className="card lg:w-[90%]
             bg-base-100 shadow-xl">
-             <div> <figure className="px-10 pt-10">
-                <img src={product.photo} alt="Shoes" className="rounded-xl" />
+              <div> <figure className="px-10 pt-10">
+                <img src={product.photo} alt="Shoes" className="rounded-xl w-[70%]" />
               </figure></div>
               <div className="card-body items-center text-center">
                 <h2 className="card-title text-2xl text-[#EDC10F]">{product.brand}</h2>
@@ -72,8 +75,9 @@ const BrandProducts = () => {
 
                 <p className='text-gray-400'>Rating : {product.rating}</p>
                 <div className="card-actions">
-                  <button className="btn btn-primary">Buy Now</button>
-                  <button className="btn btn-primary">Buy Now</button>
+                  <Link to= {`/products/${product._id}`}>
+                    <button className="btn border-0 rounded-none text-[#EDC10F] font-bold ">Details  <BsFillArrowDownLeftCircleFill></BsFillArrowDownLeftCircleFill></button></Link>
+                  <button className="btn border-0 rounded-none text-[#EDC10F] font-bold">Update <RxUpdate></RxUpdate></button>
                 </div>
               </div>
             </div>
