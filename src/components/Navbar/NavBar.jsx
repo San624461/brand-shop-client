@@ -1,7 +1,30 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import './Navbar.css'
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvide';
+import Swal from 'sweetalert2';
 const NavBar = () => {
+  const { user, logOut, createUser } = useContext(AuthContext)
+  console.log(createUser)
+  const handleSignOut = () => {
+    logOut()
+      .then(res => {
+        Swal.fire(
+          'Good job!',
+          'Logged Out Successfully!',
+          'success'
+        )
+      })
+      .catch(error => {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Failed To Logged Out',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
+      })
+  }
 
   const navLinks = <>
 
@@ -33,6 +56,13 @@ const NavBar = () => {
           isPending ? "pending" : isActive ? "active" : ""
         }>Log In</NavLink>
     </li>
+    <li className=''>
+      <NavLink to='/register'
+
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "active" : ""
+        }>Register</NavLink>
+    </li>
 
 
   </>
@@ -46,23 +76,56 @@ const NavBar = () => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
             <ul tabIndex={0} className=" menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-300 rounded-box w-52  ">
-             {navLinks}
+              {navLinks}
             </ul>
           </div>
-          <a href="#" className="flex items-center">
-            <img src={logo} className="h-8 mr-3" alt="" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Gulp Groove</span>
+        <div>
+        <a href="#" className="flex items-center">
+            <img src={logo} className="h-8 mr-3 " alt="" />
+            <span className="self-center  text-xl md:text-2xl lg:text-2xl font-semibold whitespace-nowrap dark:text-white w-[20%]">Gulp Groove</span>
           </a>
+        </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1 text-xl font-medium">
             {navLinks}
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end ">
+        {user?.displayName && (
+          <p className="text-sm">{user.displayName}</p>
+        )}
+        {user?.email && (
+          <div className="avatar ml-3">
+            <div className="w-8 rounded-full">
+              <img src={user.photoURL} alt="User Avatar" />
+            </div>
+          </div>
+        )}
+        {
+          user ? <button
+            onClick={handleSignOut} className="btn w-[20%] bg-white text-[#EDC10F] ml-3 pt-3 pb-2 ">
+            Sign Out
+          </button>
+            :
+
+
+            <button className="btn bg-white  text-[#EDC10F]">
+              <Link to='/login'>Log In</Link>
+            </button>
+        }
+      
+
         </div>
+        
+
+
+
+
+
       </div>
+      
+
     </>
   );
 };
