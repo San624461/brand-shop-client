@@ -5,8 +5,8 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvide';
 import Swal from 'sweetalert2';
 const NavBar = () => {
-  const { user, logOut, createUser } = useContext(AuthContext)
-  console.log(createUser)
+  const { user, logOut } = useContext(AuthContext)
+  // console.log(createUser)
   const handleSignOut = () => {
     logOut()
       .then(res => {
@@ -79,12 +79,12 @@ const NavBar = () => {
               {navLinks}
             </ul>
           </div>
-        <div>
-        <a href="#" className="flex items-center">
-            <img src={logo} className="h-8 mr-3 " alt="" />
-            <span className="self-center  text-xl md:text-2xl lg:text-2xl font-semibold whitespace-nowrap dark:text-white w-[20%]">Gulp Groove</span>
-          </a>
-        </div>
+          <div>
+            <a href="#" className="flex items-center">
+              <img src={logo} className="h-8 mr-3 " alt="" />
+              <span className="self-center  text-xl md:text-2xl lg:text-2xl font-semibold whitespace-nowrap dark:text-white w-[20%]">Gulp Groove</span>
+            </a>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1 text-xl font-medium">
@@ -92,39 +92,39 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end ">
-        {user?.displayName && (
-          <p className="text-sm">{user.displayName}</p>
-        )}
-        {user?.email && (
-          <div className="avatar ml-3">
-            <div className="w-8 rounded-full">
-              <img src={user.photoURL} alt="User Avatar" />
+          {user?.displayName && (
+            <p className="text-sm">{user.displayName}</p>
+          )}
+          {user?.email && (
+            <div className="avatar ml-3">
+              <div className="w-8 rounded-full">
+                <img src={user.photoURL} alt="User Avatar" />
+              </div>
             </div>
-          </div>
-        )}
-        {
-          user ? <button
-            onClick={handleSignOut} className="btn w-[20%] bg-white text-[#EDC10F] ml-3 pt-3 pb-2 ">
-            Sign Out
-          </button>
-            :
-
-
-            <button className="btn bg-white  text-[#EDC10F]">
-              <Link to='/login'>Log In</Link>
+          )}
+          {
+            user ? <button
+              onClick={handleSignOut} className="btn w-[20%] bg-white text-[#EDC10F] ml-3 pt-3 pb-2 ">
+              Sign Out
             </button>
-        }
-      
+              :
+
+
+              <button className="btn bg-white  text-[#EDC10F]">
+                <Link to='/login'>Log In</Link>
+              </button>
+          }
+
 
         </div>
-        
+
 
 
 
 
 
       </div>
-      
+
 
     </>
   );
