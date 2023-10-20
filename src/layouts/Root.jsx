@@ -3,13 +3,13 @@ import { Outlet } from 'react-router-dom';
 import NavBar from '../components/Navbar/NavBar';
 import Footer from '../components/Footer';
 
-
 const Root = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
-    const darkModeClass = isDarkMode ? 'bg-black' : 'bg-white';
+
     function toggleDarkMode() {
         setIsDarkMode(!isDarkMode);
     }
+
     useEffect(() => {
         if (isDarkMode) {
             document.documentElement.classList.add('bg-black');
@@ -17,17 +17,17 @@ const Root = () => {
             document.documentElement.classList.remove('bg-black');
         }
     }, [isDarkMode]);
+
     return (
         <div className='w-[90%] mx-auto font-ibm'>
-            <div className={`${darkModeClass}`}>
+            <div className={isDarkMode ? 'bg-black' : 'bg-white'}>
                 <NavBar></NavBar>
                 <Outlet></Outlet>
                 <Footer></Footer>
 
-
                 <button
                     onClick={toggleDarkMode}
-                    className={`bg-stone-400 btn hover:bg-blue-600 text-white font-bold py-2 px-4 rounded ${darkModeClass}`}
+                    className="bg-[#EDC10F] hover:bg-black text-white font-bold py-2 px-4 rounded"
                 >
                     Enable Dark Mode
                 </button>
