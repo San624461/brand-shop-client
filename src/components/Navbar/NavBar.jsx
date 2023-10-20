@@ -75,7 +75,7 @@ const NavBar = () => {
           <div>
             <a href="#" className="flex items-center">
               <img src={logo} className="h-8 mr-3 " alt="" />
-              <span className="self-center  text-xl md:text-2xl lg:text-2xl font-semibold whitespace-nowrap dark:text-white w-[20%]">Gulp Groove</span>
+              <span className="self-center  text-sm md:text-2xl lg:text-2xl font-semibold whitespace-nowrap dark:text-white w-[20%]">Gulp Groove</span>
             </a>
           </div>
         </div>
