@@ -10,7 +10,7 @@ const BrandProducts = () => {
   console.log(products);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/brand/${brandName}`)
+    fetch(`https://brand-shop-server-hvckvfhh7-sans-projects-f62f7a6a.vercel.app/products/brand/${brandName}`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

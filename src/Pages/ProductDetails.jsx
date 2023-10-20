@@ -30,7 +30,7 @@ const ProductDetails = () => {
             setAddedProducts([...addedProducts, addedProduct]);
 
      
-            fetch('http://localhost:5000/cart', {
+            fetch('https://brand-shop-server-hvckvfhh7-sans-projects-f62f7a6a.vercel.app/cart', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
