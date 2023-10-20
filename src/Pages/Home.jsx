@@ -6,12 +6,16 @@ import Footer from '../components/Footer';
 import HomeBrands from '../components/HomeBrands';
 import Insta from '../components/Insta';
 import HomeReview from '../components/HomeReview';
+import { useEffect, useState } from 'react';
 
 const Home = () => {
+    
     const loadedBrands = useLoaderData()
+    
+     
     // console.log(loadedBrands);
     return (
-        <div>
+        <div >
          
           
             <Banner></Banner>
@@ -20,6 +24,10 @@ const Home = () => {
             ></HomeBrands>
             <Insta></Insta>
             <HomeReview></HomeReview>
+
+
+           
+
             
         </div>
     );

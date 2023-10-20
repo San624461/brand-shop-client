@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams} from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { BsFillArrowDownLeftCircleFill } from 'react-icons/bs';
 import { RxUpdate } from "react-icons/rx";
 
@@ -68,16 +68,16 @@ const BrandProducts = () => {
                 <img src={product.photo} alt="Shoes" className="rounded-xl w-[70%]" />
               </figure></div>
               <div className="card-body items-center text-center">
-                <h2 className="card-title text-2xl text-[#EDC10F]">{product.brand}</h2>
+                <h2 className="card-title text-2xl text-[#EDC10F]">{product.name}</h2>
                 <p className='text-xl'>{product.description}</p>
                 <p className='text-gray-400'>{product.type}</p>
                 <p className='text-gray-400'> Price : {product.price}</p>
 
                 <p className='text-gray-400'>Rating : {product.rating}</p>
                 <div className="card-actions">
-                  <Link to= {`/products/${product._id}`}>
+                  <Link to={`/products/${product._id}`}>
                     <button className="btn border-0 rounded-none text-[#EDC10F] font-bold ">Details  <BsFillArrowDownLeftCircleFill></BsFillArrowDownLeftCircleFill></button></Link>
-                  <button className="btn border-0 rounded-none text-[#EDC10F] font-bold">Update <RxUpdate></RxUpdate></button>
+                  <Link to={`/update/${product._id}`}><button className="btn border-0 rounded-none text-[#EDC10F] font-bold">Update <RxUpdate></RxUpdate></button></Link>
                 </div>
               </div>
             </div>

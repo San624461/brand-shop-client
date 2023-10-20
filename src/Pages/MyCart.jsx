@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { FiDelete } from 'react-icons/fi';
 import { GrUpdate } from 'react-icons/gr';
 import Swal from 'sweetalert2'
@@ -16,9 +16,9 @@ const MyCart = () => {
                 console.log(data);
                 if (data.deletedCount > 0) {
 
-                   
+
                     const remaining = products.filter(product => product._id !== _id);
-                    
+
                     setProduct(remaining)
                     Swal.fire(
                         'Good job!',
@@ -43,7 +43,7 @@ const MyCart = () => {
                                 <button
                                     onClick={() => handleDelete(product._id)} className="btn 
                                 rounded-none text-white bg-[#EDC10F] mt-2">Delete <FiDelete className='text-black'></FiDelete></button>
-                                <button className="btn rounded-none text-white bg-[#EDC10F] mt-2">Update <GrUpdate ></GrUpdate> </button>
+                               
                             </div>
                         </div>
                     </div>
